@@ -26,7 +26,8 @@ if selected_company != "운수사를 선택해주세요":
     df_filtered.insert(0, "번호", df_filtered.index + 1)  # 새로운 인덱스 추가 (1부터 시작)
 
     # 검색창 추가 (이름 & ID 검색 가능)
-    search_query = st.text_input("운전자 이름 또는 ID를 입력하세요")
+    search_query = st.markdown("**운전자 이름** 또는 **ID**를 입력하세요:")
+    search_query = st.text_input("")
 
     if search_query:
         df_filtered = df_filtered[
