@@ -23,11 +23,14 @@ selected_company = st.selectbox("운수사를 선택하세요", driver_companies
 # 선택된 운수사의 운전자 필터링
 df_filtered = df[df['운수사'] == selected_company]
 
-# 검색창을 추가하여 운전자 검색
-search_name = st.text_input("운전자 이름을 입력하세요")
+# 검색창 추가 (이름 & ID 검색 가능)
+search_query = st.text_input("운전자 이름 또는 ID를 입력하세요")
 
-if search_name:
-    df_filtered = df_filtered[df_filtered['운전자이름'].str.contains(search_name, na=False, case=False)]
+if search_query:
+    df_filtered = df_filtered[
+        df_filtered['운전자이름'].str.contains(search_query, na=False, case=False) |
+        df_filtered['운전자ID'].astype(str).str.contains(search_query, na=False, case=False)
+    ]
 
 # 결과 출력
 st.dataframe(df_filtered)
