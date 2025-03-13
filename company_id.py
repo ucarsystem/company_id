@@ -35,7 +35,7 @@ if selected_company != "운수사를 선택해주세요":
         ].reset_index(drop=True)  # 검색 후에도 인덱스 다시 설정
         df_filtered.insert(0, "번호", df_filtered.index + 1)  # 번호 다시 설정
 
-    # 결과 출력
-    st.dataframe(df_filtered)
+    # 결과 출력 (기본 인덱스 숨기기)
+    st.dataframe(df_filtered, hide_index=True)
 else:
     st.write("운수사를 선택하면 운전자 명단이 표시됩니다.")
