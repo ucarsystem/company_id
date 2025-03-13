@@ -10,6 +10,9 @@ def load_data():
 
 df = load_data()
 
+# '퇴사여부' 컬럼의 NaN 값을 빈 문자열로 변경
+df['퇴사여부'] = df['퇴사여부'].fillna('')
+
 # Streamlit UI 설정
 st.title("운수사별 운전자 명단 조회")
 
